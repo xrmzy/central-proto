@@ -1,23 +1,26 @@
-PROTO_FILES := $(shell find ./hris -name "*.proto")
+PROTO_FILES := $(shell find proto -name "*.proto")
 GEN_DIR=./pb
-OUT_DIR = ./pb
-PROTOC = protoc
-PROTO_GEN_JS = ./node_modules/protoc-gen-js/bin/protoc-gen-js
-PROTO_GEN_GRPC = ./node_modules/grpc-tools/bin/grpc_node_plugin
+OUT_DIR=./pb
 
-gen-go:
-	mkdir -p pb
+# Windows-compatible paths for plugins
+PROTO_GEN_JS := ./node_modules/.bin/protoc-gen-js
+PROTO_GEN_GRPC := ./node_modules/.bin/grpc_tools_node_protoc_plugin
+
+# Ensure the output directory exists
+ensure_dir:
+	mkdir -p $(OUT_DIR)
+
+gen-go: ensure_dir
 	protoc \
-		-I . \
-		--go_out=pb \
-		--go-grpc_out=pb \
+		-I=proto \
+		--go_out=$(OUT_DIR) --go_opt=paths=source_relative \
+		--go-grpc_out=$(OUT_DIR) --go-grpc_opt=paths=source_relative \
 		$(PROTO_FILES)
 
-gen-node:
+gen-node: ensure_dir
 	@echo "Generating JS + gRPC stubs..."
-	mkdir -p $(OUT_DIR)
-	$(PROTOC) \
-		-I . \
+	protoc \
+		-I=proto \
 		--plugin=protoc-gen-js=$(PROTO_GEN_JS) \
 		--js_out=import_style=commonjs,binary:$(OUT_DIR) \
 		--plugin=protoc-gen-grpc=$(PROTO_GEN_GRPC) \

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hub.v1.x;
+
+option go_package = "hub/v1/x;x";
+
+
+service XService {
+  rpc GetX (GetxRequest) returns (GetXResponse);
+}
+
+message GetxRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message GetXResponse {
+  string id = 1;
+  string name = 2;
+  string position = 3;
+  string division = 4;
+}

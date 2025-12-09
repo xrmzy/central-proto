@@ -7,13 +7,15 @@
     "proto:generate": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/pb --grpc_out=grpc_js:./src/pb -I ./proto ./proto/**/*.proto"
   },
   "files": [
+    "proto/**/*.proto",
     "hris/**/*.proto",
     "index.js"
   ],
   "keywords": [
     "grpc",
     "proto",
-    "hris"
+    "hris",
+    "protobuf"
   ],
   "license": "UNLICENSED",
   "dependencies": {
