@@ -1,0 +1,31 @@
+{
+  "name": "@xrmzy/proto",
+  "version": "1.0.0",
+  "description": "HRIS proto definitions (Dynamic Loading)",
+  "main": "index.js",
+  "scripts": {
+    "proto:generate": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/pb --grpc_out=grpc_js:./src/pb -I ./proto ./proto/**/*.proto"
+  },
+  "files": [
+    "hris/**/*.proto",
+    "index.js"
+  ],
+  "keywords": [
+    "grpc",
+    "proto",
+    "hris"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.2",
+    "@grpc/proto-loader": "^0.8.0",
+    "google-protobuf": "^4.0.1",
+    "protobufjs": "^7.5.4"
+  },
+  "devDependencies": {
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.11.2",
+    "protoc-gen-js": "^3.21.4-4",
+    "ts-proto": "^2.8.3"
+  }
+}

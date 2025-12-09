@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hris.v1.employee;
+
+option go_package = "hris/v1/employee;employee";
+
+
+service EmployeeService {
+  rpc GetEmployee (GetEmployeeRequest) returns (EmployeeResponse);
+}
+
+message GetEmployeeRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message EmployeeResponse {
+  string id = 1;
+  string name = 2;
+  string position = 3;
+  string division = 4;
+}

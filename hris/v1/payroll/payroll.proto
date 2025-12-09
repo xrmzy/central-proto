@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hris.v1.payroll;
+
+option go_package = "hris/v1/payroll;payroll";
+
+
+service PayrollService {
+  rpc GetPayroll (GetPayrollReques) returns (GetPayrollResponse);
+}
+
+message GetPayrollReques {
+  string id = 1;
+}
+
+message GetPayrollResponse {
+  string id = 1;
+  string name = 2;
+  string position = 3;
+}
