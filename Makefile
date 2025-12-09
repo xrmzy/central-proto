@@ -6,12 +6,19 @@
 PROTO_DIR := ./proto
 PROTO_FILES := $(shell find $(PROTO_DIR) -name "*.proto")
 
+# Plugin path use parent project node_modules
+NODE_BIN := $(shell dirname $(shell npm root))/node_modules/.bin
+
 # Default output (bisa di override dari luar)
 OUT_DIR ?= ./pb
 
 # Tools for NodeJS
-NODE_PROTOC := ./node_modules/.bin/grpc_tools_node_protoc
-NODE_GRPC_PLUGIN := ./node_modules/.bin/grpc_tools_node_protoc_plugin
+# NODE_PROTOC := ./node_modules/.bin/grpc_tools_node_protoc
+# NODE_GRPC_PLUGIN := ./node_modules/.bin/grpc_tools_node_protoc_plugin
+
+NODE_PROTOC := $(NODE_BIN)/grpc_tools_node_protoc
+NODE_GRPC_PLUGIN := $(NODE_BIN)/grpc_tools_node_protoc_plugin
+
 
 # Tools for Go
 GO_PROTOC_GEN := protoc-gen-go
