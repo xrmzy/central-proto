@@ -8,7 +8,6 @@
   },
   "files": [
     "proto/**/*.proto",
-    "hris/**/*.proto",
     "index.js"
   ],
   "keywords": [
