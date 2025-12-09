@@ -4,7 +4,7 @@
   "description": "HRIS proto definitions (Dynamic Loading)",
   "main": "index.js",
   "scripts": {
-    "proto:generate": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/pb --grpc_out=grpc_js:./src/pb -I ./proto ./proto/**/*.proto"
+     "gen-node": "protoc -I ./proto --js_out=import_style=commonjs,binary:../.. --grpc_out=grpc_js:../.."
   },
   "files": [
   "**/*.proto",
