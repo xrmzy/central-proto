@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "HRIS proto definitions (Dynamic Loading)",
   "main": "index.js",
+  "bin": {
+    "proto-gen-node": "./bin/gen-node.js"
+  },
   "scripts": {
      "gen-node": "protoc -I ./proto --js_out=import_style=commonjs,binary:../.. --grpc_out=grpc_js:../.."
   },
